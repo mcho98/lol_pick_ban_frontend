@@ -16,6 +16,9 @@ export default function App() {
   // Disable champions already picked or banned
   const selectedIds = new Set(slots.filter(Boolean).map(ch => ch.id));
 
+  const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   /* ------------------------------------------------------------
      Handle selecting a champion from the grid
      ------------------------------------------------------------ */
@@ -75,7 +78,7 @@ export default function App() {
     const payload = { team1_ids, team2_ids };
 
     try {
-      const response = await fetch("http://localhost:5000/api/predict", {
+      const response = await fetch(`${API_BASE_URL}/api/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ team1_ids, team2_ids })
