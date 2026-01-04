@@ -78,7 +78,7 @@ export default function App() {
     const payload = { team1_ids, team2_ids };
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/predict`, {
+      const response = await fetch(`http://localhost:5000/api/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ team1_ids, team2_ids })
